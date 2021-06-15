@@ -2,11 +2,11 @@ package cqu.lidong.spring.aop.proxy;
 
 import java.lang.reflect.Method;
 
-public class AspectProxy implements Proxy{
+public class AspectProxy implements Proxy {
 
     @Override
     public final Object doProxy(ProxyChain proxyChain) throws Throwable {
-        Object result = null;
+        Object result;
 
         Class<?> cls = proxyChain.getTargetClass();
         Method method = proxyChain.getTargetMethod();
@@ -24,11 +24,10 @@ public class AspectProxy implements Proxy{
         } catch (Exception e) {
             error(method, params, e);
             throw e;
+        } finally {
+            //模拟 返回切面 的增强
+            returnAdvice();
         }
-//        finally {
-//            //模拟 返回切面 的增强
-//            returnAdvice(method, params);
-//        }
 
         return result;
     }
@@ -36,20 +35,20 @@ public class AspectProxy implements Proxy{
     /**
      * 切入点判断
      */
-    public boolean intercept(Method method, Object[] params) throws Throwable {
+    public boolean intercept(Method method, Object[] params) {
         return true;
     }
 
     /**
      * 前置增强   还有一个around切面
      */
-    public void before(Method method, Object[] params) throws Throwable {
+    public void before(Method method, Object[] params) {
     }
 
     /**
      * 后置增强
      */
-    public void after(Method method, Object[] params) throws Throwable {
+    public void after(Method method, Object[] params) {
     }
 
     /**
@@ -61,7 +60,7 @@ public class AspectProxy implements Proxy{
     /**
      * 返回增强 return
      */
-    public void returnAdvice(Method method, Object[] params) {
+    public void returnAdvice() {
     }
 
 }
