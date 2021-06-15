@@ -20,6 +20,18 @@
             <version>5.2.7.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>8.5.45</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>8.5.45</version>
+        </dependency>
+
 
     </dependencies>
 
